@@ -34,8 +34,6 @@ const PropertySlider = () => {
                     </div>
                 </motion.div>
             ))}
-
-            {/* Navigation Dots */}
             <div className="absolute bottom-5 flex gap-3 justify-center w-full">
                 {slides.map((_, i) => (
                     <button
