@@ -37,8 +37,6 @@ const Login = () => {
                 toast.error(`Login failed: ${err.message}`, { position: "top-center" });
             });
     };
-
-    // Google login
     const handleGoogleLogin = () => {
         googleLogin()
             .then((result) => {
