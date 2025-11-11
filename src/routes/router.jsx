@@ -56,7 +56,7 @@ const router = createBrowserRouter([
                 element: <PropertiesDetails />,
                 loader: async ({ params }) => {
                     const res = await fetch(`http://localhost:5000/properties/${params.id}`);
-                    if (!res.ok) throw new Error("Failed to load property");
+                    if (!res.ok) throw new Error("NO DATA FOUNDED");
                     return res.json();
                 }
             }

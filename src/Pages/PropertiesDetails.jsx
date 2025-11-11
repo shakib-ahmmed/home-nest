@@ -5,8 +5,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const PropertiesDetails = () => {
-    const property = useLoaderData();
+    const data = useLoaderData();
     const { id } = useParams();
+    const property = data; // assuming loader returns single property object
 
     const [reviewForm, setReviewForm] = useState({ name: "", rating: 5, comment: "" });
     const [reviews, setReviews] = useState([]);
@@ -42,14 +43,18 @@ const PropertiesDetails = () => {
                     <h1 className="text-4xl font-bold">{property.PropertyName}</h1>
                     <p className="text-gray-700 text-lg">{property.Description}</p>
                     <div className="flex flex-wrap gap-6 mt-4 items-center">
-                        <div>
-                            <span className="font-semibold text-lg">Price:</span> ${property.Price.toLocaleString()}
+                        <div className="flex items-center gap-2">
+                            <Star className="text-yellow-400 fill-yellow-400" />
+                            <span className="font-semibold text-lg">{property.Rating || 0}</span>
                         </div>
                         <div>
-                            <span className="font-semibold text-lg">Location:</span> {property.Location}
+                            <span className="font-semibold text-lg">Price:</span> ${property.Price?.toLocaleString()}
                         </div>
                         <div>
                             <span className="font-semibold text-lg">Category:</span> {property.Category}
+                        </div>
+                        <div>
+                            <span className="font-semibold text-lg">Location:</span> {property.Location}
                         </div>
                         <div>
                             <span className="font-semibold text-lg">Posted on:</span> {formatDate(property.PostedDate)}
@@ -69,9 +74,9 @@ const PropertiesDetails = () => {
                 </div>
             </div>
 
-            <div className="bg-gray-100 p-6 rounded-lg shadow space-y-6">
-                <h2 className="text-2xl font-semibold">Ratings & Reviews</h2>
-
+            {/* Reviews Section */}
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+                <h2 className="text-2xl font-semibold mb-4">Ratings & Reviews</h2>
                 {reviews.length === 0 ? (
                     <p className="text-gray-500">No reviews yet.</p>
                 ) : (
@@ -88,8 +93,8 @@ const PropertiesDetails = () => {
                     ))
                 )}
 
-                {/* Submit review */}
-                {/* <form onSubmit={handleSubmitReview} className="space-y-4 max-w-md">
+                {/* Submit review form */}
+                <form onSubmit={handleSubmitReview} className="space-y-4 max-w-md mt-4">
                     <div>
                         <label className="block text-sm font-medium mb-1">Name</label>
                         <input
@@ -126,11 +131,11 @@ const PropertiesDetails = () => {
                     </div>
                     <button
                         type="submit"
-                        className="bg-[#075a12] hover:bg-green-950 text-white font-semibold py-2 px-4 rounded"
+                        className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md"
                     >
                         Submit Review
                     </button>
-                </form> */}
+                </form>
             </div>
 
             <ToastContainer position="top-right" autoClose={3000} />
