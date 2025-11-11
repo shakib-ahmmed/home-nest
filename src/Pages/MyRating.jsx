@@ -4,7 +4,7 @@ const MyRating = () => {
     return (
         <div>
             <h1>
-                Myyyyyy
+                Myyyyyy sdfgds gsg
             </h1>
         </div>
     );

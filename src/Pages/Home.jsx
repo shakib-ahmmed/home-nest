@@ -35,7 +35,7 @@ const Home = () => {
                 </div>
                 <div className="flex justify-center py-10">
                     <Link
-                        to="/all-properties"
+                        to={`/properties-details`}
                         className="btn bg-[#075a12] hover:bg-green-950 text-white font-semibold w-[145px] h-[45px] hover:scale-105 transition ease-in-out flex items-center justify-center"
                     >
                         See All

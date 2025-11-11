@@ -12,6 +12,7 @@ import MyProperties from "../Pages/MyProperties.jsx";
 import PropertiesDetails from "../Pages/PropertiesDetails.jsx";
 
 
+
 const router = createBrowserRouter([
 
     {
@@ -51,14 +52,16 @@ const router = createBrowserRouter([
                 element: <MyRating />
             },
             {
-                path: "/properties-details",
+                path: "/properties-details/:id",
                 element: <PropertiesDetails />,
-                loader: async () => {
-                    const res = await fetch("http://localhost:5000/properties");
-                    if (!res.ok) throw new Error("Failed to load plant data");
+                loader: async ({ params }) => {
+                    const res = await fetch(`http://localhost:5000/properties/${params.id}`);
+                    if (!res.ok) throw new Error("Failed to load property");
                     return res.json();
-                },
+                }
             }
+
+
         ]
     },
 

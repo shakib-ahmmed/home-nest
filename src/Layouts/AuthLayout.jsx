@@ -5,11 +5,15 @@ import Footer from "../Components/Footer";
 export default function AuthLayout() {
     return (
         <div className="flex flex-col min-h-screen">
-            <Navbar />
+            <header>
+                <Navbar />
+            </header>
             <main className="flex-1">
                 <Outlet />
             </main>
-            <Footer />
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 }

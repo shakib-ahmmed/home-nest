@@ -1,19 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const PropertyCard = ({ property }) => {
-    const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
-
-    const handleViewDetails = () => {
-        if (!user) {
-            navigate("/login");
-            return;
-        }
-        navigate(`/properties-details/${property._id}`);
-    };
-
     return (
         <div className="bg-white shadow-md rounded-xl overflow-hidden flex flex-col">
             <img
@@ -30,12 +17,13 @@ const PropertyCard = ({ property }) => {
                     ${property.Price.toLocaleString()}
                 </p>
             </div>
-            <button
-                onClick={handleViewDetails}
+
+            <Link
+                to={`/properties-details/${property._id}`}
                 className="text-center bg-[#075a12] hover:bg-green-950 text-white font-semibold hover:scale-105 transition ease-in-out py-2 px-4 rounded"
             >
                 View Details
-            </button>
+            </Link>
         </div>
     );
 };
