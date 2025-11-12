@@ -61,8 +61,6 @@ const router = createBrowserRouter([
                 path: "/properties-details/:id",
                 element: <PropertiesDetails />,
             }
-
-
         ]
     },
 
