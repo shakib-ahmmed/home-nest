@@ -17,7 +17,18 @@ const MyRating = () => {
             return;
         }
 
-       
+        const fetchReviews = async () => {
+            try {
+                const res = await fetch(`http://localhost:5000/ratings?email=${user.email}`);
+                if (!res.ok) throw new Error("Failed to fetch reviews");
+                const data = await res.json();
+                setReviews(data);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
         fetchReviews();
     }, [user?.email]);
