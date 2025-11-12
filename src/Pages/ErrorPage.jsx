@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../assets/error-404.png'
+import img from './public/App-Error.png'
 import { Link } from 'react-router';
 
 
