@@ -177,7 +177,7 @@ const PropertiesDetails = () => {
                     </div>
                     <button
                         type="submit"
-                        className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md"
+                        className="btn bg-[#075a12] hover:bg-green-950 text-white font-semibold w-[145px] h-[45px] hover:scale-105 transition ease-in-out py-2 px-4 rounded-md"
                     >
                         Submit Review
                     </button>
