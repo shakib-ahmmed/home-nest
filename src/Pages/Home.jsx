@@ -1,20 +1,16 @@
-
 import React, { useContext } from 'react';
 import HeroSection from '../Components/HeroSection';
-import AllProperties from '../Pages/AllProperties'
-import { PropertiesContext } from '../Provider/PropertiesContext';
-import { Loader } from 'lucide-react';
 import PropertyCard from './PropertyCard';
+import { PropertiesContext } from '../Provider/PropertiesContext';
 import { Link } from 'react-router-dom';
+import Loader from "../Components/Loader";
 
 const Home = () => {
-
     const { properties, loading } = useContext(PropertiesContext);
-
 
     if (loading) return <Loader />
 
-    const featuredProperties = properties.slice(0, 4);
+    const featuredProperties = properties.slice(0, 6);
 
     return (
         <div>
@@ -28,14 +24,14 @@ const Home = () => {
                 <p className="text-gray-500 text-center text-[20px] mb-6">
                     Explore our most loved real estate listings
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-10 px-4 lg:px-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 pt-10 px-4 lg:px-20">
                     {featuredProperties.map((property) => (
                         <PropertyCard key={property._id} property={property} />
                     ))}
                 </div>
                 <div className="flex justify-center py-10">
                     <Link
-                        to={`/properties-details`}
+                        to={`/all-properties`}
                         className="btn bg-[#075a12] hover:bg-green-950 text-white font-semibold w-[145px] h-[45px] hover:scale-105 transition ease-in-out flex items-center justify-center"
                     >
                         See All

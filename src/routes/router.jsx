@@ -10,6 +10,8 @@ import AllProperties from "../Pages/AllProperties.jsx";
 import MyRating from "../Pages/MyRating.jsx";
 import MyProperties from "../Pages/MyProperties.jsx";
 import PropertiesDetails from "../Pages/PropertiesDetails.jsx";
+import ErrorPage from "../Pages/ErrorPage.jsx";
+import MyRatings from "../Pages/MyRating.jsx";
 
 
 
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -26,7 +29,6 @@ const router = createBrowserRouter([
             {
                 path: "all-properties",
                 element: <AllProperties />,
-                loader: () => fetch('http://localhost:5000/properties')
             }
         ],
     },
@@ -48,17 +50,16 @@ const router = createBrowserRouter([
                 element: <MyProperties />
             },
             {
-                path: "/rating",
-                element: <MyRating />
+                path: "/my-ratings",
+                element: <MyRatings />,
+                loader: () => {
+                    const email = localStorage.getItem("user-email");
+                    return fetch(`http://localhost:5000/ratings?email=${email}`);
+                }
             },
             {
                 path: "/properties-details/:id",
                 element: <PropertiesDetails />,
-                loader: async ({ params }) => {
-                    const res = await fetch(`http://localhost:5000/properties/${params.id}`);
-                    if (!res.ok) throw new Error("NO DATA FOUNDED");
-                    return res.json();
-                }
             }
 
 
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
 
     {
         path: '*',
-        element: <h2>Error 404 - Page Not Found</h2>
+        element: <ErrorPage />,
     }
 ]);
 

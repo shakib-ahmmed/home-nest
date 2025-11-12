@@ -10,7 +10,7 @@ const MyProperties = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!user) return;
+        if (!user?.email) return;
 
         const fetchProperties = async () => {
             try {
@@ -25,7 +25,7 @@ const MyProperties = () => {
         };
 
         fetchProperties();
-    }, [user]);
+    }, [user?.email]);
 
     const handleDelete = async (id) => {
         if (!window.confirm("Are you sure you want to delete this property?")) return;
@@ -62,7 +62,7 @@ const MyProperties = () => {
                                 alt={property.PropertyName}
                                 className="h-48 w-full object-cover"
                             />
-                            <div className="p-4 flex flex-col flex-grow">
+                            <div className="p-4 flex flex-col">
                                 <h2 className="text-xl font-bold mb-1">{property.PropertyName}</h2>
                                 <p className="text-gray-600 mb-1">{property.Category}</p>
                                 <p className="text-gray-500 mb-1">${property.Price?.toLocaleString() || "0"}</p>

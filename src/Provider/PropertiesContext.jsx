@@ -7,17 +7,24 @@ export const PropertiesProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:5000/properties")
-            .then((res) => res.json())
-            .then((data) => {
+        const fetchProperties = async () => {
+            try {
+                const userEmail = localStorage.getItem("user-email");
+                let url = "http://localhost:5000/properties";
+                if (userEmail) url += `?userEmail=${userEmail}`;
+
+                const res = await fetch(url);
+                const data = await res.json();
                 setProperties(data);
-                setLoading(false);
-            })
-            .catch((err) => {
+            } catch (err) {
                 console.error("Failed to fetch properties:", err);
+            } finally {
                 setLoading(false);
-            });
+            }
+        };
+        fetchProperties();
     }, []);
+
 
     return (
         <PropertiesContext.Provider value={{ properties, loading }}>
