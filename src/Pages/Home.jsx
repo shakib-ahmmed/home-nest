@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import HeroSection from '../Components/HeroSection';
 import PropertyCard from './PropertyCard';
 import { PropertiesContext } from '../Provider/PropertiesContext';
-import { Link } from 'react-router-dom';
+import { Link, Links } from 'react-router-dom';
 import Loader from "../Components/Loader";
 
 const Home = () => {
@@ -40,50 +40,60 @@ const Home = () => {
             </div>
 
             {/* Why Choose Us */}
-
-            <div className="bg-gray-100 pb-8 py-16 px-4 md:px-16 text-center">
-                <h2 className="text-3xl font-bold mb-8">Why Choose Us</h2>
-                <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-[#075a12] pt-12 pb-16 px-6 md:px-20 text-center text-white">
+                <h2 className="text-4xl md:text-5xl font-extrabold mb-12">Why Choose Us</h2>
+                <div className="grid md:grid-cols-3 gap-10">
                     {[
                         { title: "Trusted Experts", desc: "We have a team of professionals with years of experience." },
                         { title: "Wide Selection", desc: "Choose from hundreds of properties across different locations." },
                         { title: "Best Prices", desc: "We provide the most competitive prices and transparent deals." },
                     ].map((item, i) => (
-                        <div key={i} className="bg-gray-300 p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                            <p>{item.desc}</p>
+                        <div
+                            key={i}
+                            className="bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+                        >
+                            <h3 className="text-2xl font-bold mb-4 text-white">{item.title}</h3>
+                            <p className="text-white/90">{item.desc}</p>
                         </div>
                     ))}
                 </div>
             </div>
 
+
             {/*Section 1 */}
 
-            {/* <section className="px-4 md:px-16">
-                <h2 className="text-3xl font-bold mb-8 text-center">Happy Clients</h2>
-                <div className="grid md:grid-cols-3 gap-8">
+            <section className="px-4 md:px-16 py-16 bg-gray-100 text-gray-900">
+                <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center">Our Happy Clients</h2>
+                <div className="grid md:grid-cols-3 gap-10">
                     {[
                         { text: `"Amazing service! Found my dream home in no time."`, name: "John Doe" },
                         { text: `"Professional team and excellent property listings."`, name: "Sarah Smith" },
                         { text: `"Highly recommend them for anyone looking to buy real estate."`, name: "Michael Lee" },
                     ].map((c, i) => (
-                        <div key={i} className="bg-white p-6 rounded-lg shadow">
-                            <p>{c.text}</p>
-                            <p className="mt-2 font-semibold">- {c.name}</p>
+                        <div
+                            key={i}
+                            className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+                        >
+                            <p className="text-gray-800 italic">{c.text}</p>
+                            <p className="mt-4 font-semibold text-gray-900">- {c.name}</p>
                         </div>
                     ))}
                 </div>
-            </section> */}
+            </section>
+
 
             {/* Section 2 */}
 
-            {/* <section className="bg-blue-600 text-white py-16 px-4 md:px-16 text-center rounded-lg flex flex-col items-center">
-                <h2 className="text-3xl font-bold mb-4">Looking for Your Dream Property?</h2>
-                <p className="mb-8 max-w-xl">Contact us today and find the perfect home for you and your family.</p>
-                <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-                    Get Started
-                </button>
-            </section> */}
+            <section className="pt-8 pb-5">
+                <div className='bg-[#075a12] text-white py-16 px-4 md:px-16 text-center rounded-lg flex flex-col items-center'>
+                    <h2 className="text-3xl font-bold mb-4">Looking for Your Dream Property?</h2>
+                    <p className="mb-8 max-w-xl">Contact us today and find the perfect home for you and your family.</p>
+                    <Link className="bg-white text-green-600 font-semibold rounded-lg w-[145px] h-[45px] hover:scale-105 transition ease-in-out flex items-center justify-center"
+                        to={`/all-properties`}>
+                        Get Started
+                    </Link>
+                </div>
+            </section>
         </div >
 
     );

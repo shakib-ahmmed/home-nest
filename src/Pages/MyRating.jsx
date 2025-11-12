@@ -4,7 +4,7 @@ import { PropertiesContext } from "../Provider/PropertiesContext";
 import { Star } from "lucide-react";
 import Loader from "../Components/Loader";
 
-const MyReviews = () => {
+const MyRating = () => {
     const { user } = useContext(AuthContext);
     const { properties, loading: propertiesLoading } = useContext(PropertiesContext);
 
@@ -12,7 +12,10 @@ const MyReviews = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (!user?.email) return;
+        if (!user?.email) {
+            setLoading(false); 
+            return;
+        }
 
         const fetchReviews = async () => {
             try {
@@ -29,6 +32,7 @@ const MyReviews = () => {
 
         fetchReviews();
     }, [user?.email]);
+
 
     if (!user) return <h2 className="text-center mt-10">Please login to see your reviews</h2>;
     if (loading || propertiesLoading) return <Loader />;
@@ -77,4 +81,4 @@ const MyReviews = () => {
     );
 };
 
-export default MyReviews;
+export default MyRating;

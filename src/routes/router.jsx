@@ -7,11 +7,12 @@ import Login from "../Pages/Login.jsx";
 import Register from "../Pages/Register.jsx";
 import AddProperty from "../Pages/AddProperty.jsx";
 import AllProperties from "../Pages/AllProperties.jsx";
-import MyRating from "../Pages/MyRating.jsx";
+
 import MyProperties from "../Pages/MyProperties.jsx";
 import PropertiesDetails from "../Pages/PropertiesDetails.jsx";
 import ErrorPage from "../Pages/ErrorPage.jsx";
-import MyRatings from "../Pages/MyRating.jsx";
+import MyRating from "../Pages/MyRating.jsx";
+import UpdateProperty from "../Pages/UpdateProperty.jsx";
 
 
 
@@ -47,11 +48,16 @@ const router = createBrowserRouter([
             },
             {
                 path: "/My-Properties",
-                element: <MyProperties />
+                element: <MyProperties />,
             },
             {
-                path: "/my-ratings",
-                element: <MyRatings />,
+                path: "/update-property/:id",
+                element: <UpdateProperty />,
+
+            },
+            {
+                path: "/my-rating",
+                element: <MyRating />,
                 loader: () => {
                     const email = localStorage.getItem("user-email");
                     return fetch(`http://localhost:5000/ratings?email=${email}`);

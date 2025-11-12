@@ -46,21 +46,35 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2"
                         >
                             <li>
-                                <NavLink to="/">Home</NavLink>
+                                <NavLink
+                                    to="/">Home
+                                </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/properties">All Properties</NavLink>
+                                <NavLink
+                                    to="/properties">
+                                    All Properties
+                                </NavLink>
                             </li>
                             {user && (
                                 <>
                                     <li>
-                                        <NavLink to="/add-property">Add Property</NavLink>
+                                        <NavLink
+                                            to="/add-property">
+                                            Add Property
+                                        </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/my-properties">My Properties</NavLink>
+                                        <NavLink
+                                            to="/my-properties">
+                                            My Properties
+                                        </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/rating">My Ratings</NavLink>
+                                        <NavLink
+                                            to="/my-rating">
+                                            My Ratings
+                                        </NavLink>
                                     </li>
                                 </>
                             )}
@@ -87,21 +101,36 @@ const Navbar = () => {
                 <div className="navbar-center font-bold hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li>
-                            <NavLink to="/">Home</NavLink>
+                            <NavLink
+                                to="/">
+                                Home
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/all-properties">All Properties</NavLink>
+                            <NavLink
+                                to="/all-properties">
+                                All Properties
+                            </NavLink>
                         </li>
                         {user && (
                             <>
                                 <li>
-                                    <NavLink to="/add-property">Add Property</NavLink>
+                                    <NavLink
+                                        to="/add-property">
+                                        Add Property
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/my-properties">My Properties</NavLink>
+                                    <NavLink
+                                        to="/my-properties">
+                                        My Properties
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/rating">My Ratings</NavLink>
+                                    <NavLink
+                                        to="/my-rating">
+                                        My Ratings
+                                    </NavLink>
                                 </li>
                             </>
                         )}
