@@ -60,7 +60,7 @@ const router = createBrowserRouter([
                 element: <MyRating />,
                 loader: () => {
                     const email = localStorage.getItem("user-email");
-                    return fetch(`http://localhost:5000/ratings?email=${email}`);
+                    return fetch(`https://home-nest-server-nine.vercel.app/ratings?email=${email}`);
                 }
             },
             {

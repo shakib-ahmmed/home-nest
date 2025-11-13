@@ -17,7 +17,7 @@ const UpdateProperty = () => {
     useEffect(() => {
         const fetchProperty = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/properties/${id}`);
+                const res = await fetch(`https://home-nest-server-nine.vercel.app/properties/${id}`);
                 if (!res.ok) throw new Error("Failed to fetch property");
                 const data = await res.json();
                 setProperty(data);
@@ -52,7 +52,7 @@ const UpdateProperty = () => {
             const { _id, PostedBy, ...updateData } = property;
             updateData.Price = Number(updateData.Price);
 
-            const res = await fetch(`http://localhost:5000/properties/${id}`, {
+            const res = await fetch(`https://home-nest-server-nine.vercel.app/properties/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updateData),

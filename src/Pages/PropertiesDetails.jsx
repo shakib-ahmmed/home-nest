@@ -25,7 +25,7 @@ const PropertiesDetails = () => {
         const fetchReviews = async () => {
             try {
                 setReviewsLoading(true);
-                const res = await fetch(`http://localhost:5000/reviews/${id}`);
+                const res = await fetch(`https://home-nest-server-nine.vercel.app/reviews/${id}`);
                 const data = await res.json();
                 setReviews(data);
             } catch (err) {
@@ -45,7 +45,7 @@ const PropertiesDetails = () => {
         e.preventDefault();
 
         try {
-            const res = await fetch("http://localhost:5000/reviews", {
+            const res = await fetch("https://home-nest-server-nine.vercel.app/reviews", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -60,7 +60,7 @@ const PropertiesDetails = () => {
 
             const newReview = await res.json();
 
-            const updatedReviews = await fetch(`http://localhost:5000/reviews/${id}`).then(res => res.json());
+            const updatedReviews = await fetch(`https://home-nest-server-nine.vercel.app/reviews/${id}`).then(res => res.json());
             setReviews(updatedReviews);
 
             toast.success("Review submitted successfully!");

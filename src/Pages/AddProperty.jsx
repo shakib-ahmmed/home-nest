@@ -37,7 +37,7 @@ const AddProperty = () => {
         };
 
         try {
-            const res = await fetch("http://localhost:5000/properties", {
+            const res = await fetch("https://home-nest-server-nine.vercel.app/properties", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

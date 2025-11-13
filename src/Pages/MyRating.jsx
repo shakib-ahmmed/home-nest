@@ -13,13 +13,13 @@ const MyRating = () => {
 
     useEffect(() => {
         if (!user?.email) {
-            setLoading(false); 
+            setLoading(false);
             return;
         }
 
         const fetchReviews = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/ratings?email=${user.email}`);
+                const res = await fetch(`https://home-nest-server-nine.vercel.app/ratings?email=${user.email}`);
                 if (!res.ok) throw new Error("Failed to fetch reviews");
                 const data = await res.json();
                 setReviews(data);

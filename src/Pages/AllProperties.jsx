@@ -18,7 +18,7 @@ const AllProperties = () => {
         setLoading(true);
         try {
             const res = await fetch(
-                `http://localhost:5000/properties?sortBy=${sortBy}&order=${order}&search=${searchQuery}`
+                `https://home-nest-server-nine.vercel.app/properties?sortBy=${sortBy}&order=${order}&search=${searchQuery}`
             );
             const data = await res.json();
             setProperties(data);

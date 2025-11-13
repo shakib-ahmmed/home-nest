@@ -14,7 +14,7 @@ const MyProperties = () => {
 
         const fetchProperties = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/properties?userEmail=${user.email}`);
+                const res = await fetch(`https://home-nest-server-nine.vercel.app/properties?userEmail=${user.email}`);
                 if (!res.ok) throw new Error("Failed to fetch properties");
                 const data = await res.json();
                 setProperties(data);
@@ -31,7 +31,7 @@ const MyProperties = () => {
         if (!window.confirm("Are you sure you want to delete this property?")) return;
 
         try {
-            const res = await fetch(`http://localhost:5000/properties/${id}`, { method: "DELETE" });
+            const res = await fetch(`https://home-nest-server-nine.vercel.app/properties/${id}`, { method: "DELETE" });
             if (!res.ok) throw new Error("Failed to delete property");
 
             setProperties(properties.filter((p) => p._id !== id));

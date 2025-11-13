@@ -10,7 +10,7 @@ export const PropertiesProvider = ({ children }) => {
         const fetchProperties = async () => {
             try {
                 const userEmail = localStorage.getItem("user-email");
-                let url = "http://localhost:5000/properties";
+                let url = "https://home-nest-server-nine.vercel.app/properties";
                 if (userEmail) url += `?userEmail=${userEmail}`;
 
                 const res = await fetch(url);
