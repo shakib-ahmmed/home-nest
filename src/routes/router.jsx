@@ -16,6 +16,7 @@ import UpdateProperty from "../Pages/UpdateProperty.jsx";
 import About from "../Pages/About.jsx";
 import Contact from "../Pages/Contact.jsx";
 import DashboardLayout from "../Layouts/DashboardLayout.jsx";
+import DashboardHome from "../Pages/DashboardHome.jsx";
 
 
 
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
                 <DashboardLayout />
             </PrivetRoute>,
         children: [
+            {
+                index: true,
+                element: <DashboardHome />,
+            },
             {
                 path: "add-property",
                 element: <AddProperty />
