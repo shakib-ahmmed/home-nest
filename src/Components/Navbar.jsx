@@ -18,23 +18,26 @@ const Navbar = () => {
     }, []);
     useEffect(() => {
         const applyTheme = (mode) => {
-            document.documentElement.setAttribute("data-theme", mode);
+            if (mode === "system") {
+                const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+            } else {
+                document.documentElement.setAttribute("data-theme", mode);
+            }
         };
+
+        applyTheme(theme);
 
         if (theme === "system") {
             const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-            applyTheme(mediaQuery.matches ? "dark" : "light");
-
-            const handler = (e) => applyTheme(e.matches ? "dark" : "light");
+            const handler = () => applyTheme("system");
             mediaQuery.addEventListener("change", handler);
-
             return () => mediaQuery.removeEventListener("change", handler);
-        } else {
-            applyTheme(theme);
         }
 
         localStorage.setItem("theme", theme);
     }, [theme]);
+
     const handleLogOut = () => {
         logOut()
             .then(() => {

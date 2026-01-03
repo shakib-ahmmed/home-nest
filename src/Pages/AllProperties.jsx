@@ -32,13 +32,10 @@ const AllProperties = () => {
 
     return (
         <div className="lg:w-10/12 mx-auto py-10">
-            <h1 className="text-3xl font-bold mb-6 text-center">All Properties</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">All Properties</h1>
+
+            {/* Search & Sort */}
             <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
-
-
-                {/* search and sort section */}
-
-
 
                 <div className="flex items-center w-12 md:w-1/2 gap-2">
                     <input
@@ -46,21 +43,22 @@ const AllProperties = () => {
                         placeholder="Search by property name..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="border border-gray-300 rounded-lg px-3 py-1.5 w-full text-sm"
+                        className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 w-full text-sm bg-white dark:bg-base-200 text-gray-900 dark:text-gray-100"
                     />
                     <button
                         onClick={() => setSearchQuery(search)}
-                        className="btn bg-[#075a12] text-white font-semibold px-4 hover:scale-105 transition ease-in-out flex items-center justify-center py-1.5 rounded-lg "
+                        className="btn bg-[#075a12] text-white font-semibold px-4 hover:scale-105 transition ease-in-out flex items-center justify-center py-1.5 rounded-lg"
                     >
                         Search
                     </button>
                 </div>
+
                 <div className="flex items-center gap-2">
-                    <label className="text-gray-600 text-sm font-medium">Sort by:</label>
+                    <label className="text-gray-600 dark:text-gray-300 text-sm font-medium">Sort by:</label>
                     <select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
-                        className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm"
+                        className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-base-200 text-gray-900 dark:text-gray-100"
                     >
                         <option value="price">Price</option>
                         <option value="postedDate">Posted Date</option>
@@ -68,14 +66,15 @@ const AllProperties = () => {
 
                     <button
                         onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-                        className="bg-gray-200 hover:bg-gray-300 text-sm px-3 py-1.5 rounded-lg"
+                        className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm px-3 py-1.5 rounded-lg text-gray-900 dark:text-gray-100"
                     >
                         {order === "asc" ? "↑ Asc" : "↓ Desc"}
                     </button>
                 </div>
             </div>
+
             {properties.length === 0 ? (
-                <p className="text-gray-500 text-center">No properties available.</p>
+                <p className="text-gray-500 dark:text-gray-400 text-center">No properties available.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {properties.map((property) => (

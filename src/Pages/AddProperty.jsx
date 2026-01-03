@@ -64,39 +64,41 @@ const AddProperty = () => {
 
     return (
         <div className="lg:w-8/12 mx-auto py-10">
-            <h1 className="text-3xl font-bold mb-6">Add New Property</h1>
-            <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-md">
-
+            <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Add New Property</h1>
+            <form
+                onSubmit={handleSubmit}
+                className="space-y-4 bg-white dark:bg-base-200 p-6 rounded-lg shadow-md transition-colors duration-300"
+            >
                 <div>
-                    <label className="block font-medium mb-1">Property Name</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">Property Name</label>
                     <input
                         type="text"
                         name="PropertyName"
                         value={formData.PropertyName}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-base-100 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Description</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">Description</label>
                     <textarea
                         name="Description"
                         value={formData.Description}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-base-100 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Category</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">Category</label>
                     <select
                         name="Category"
                         value={formData.Category}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-md p-2"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-base-100 text-gray-900 dark:text-gray-100"
                     >
                         <option value="Rent">Rent</option>
                         <option value="Sale">Sale</option>
@@ -106,58 +108,58 @@ const AddProperty = () => {
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Price</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">Price</label>
                     <input
                         type="number"
                         name="Price"
                         value={formData.Price}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-base-100 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Location</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">Location</label>
                     <input
                         type="text"
                         name="Location"
                         value={formData.Location}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-base-100 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">Image Link</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">Image Link</label>
                     <input
                         type="text"
                         name="PropertyImage"
                         value={formData.PropertyImage}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-md p-2"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-base-100 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">User Name</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">User Name</label>
                     <input
                         type="text"
                         value={user?.displayName || user?.name || ""}
                         readOnly
-                        className="w-full border border-gray-300 rounded-md p-2 bg-gray-100"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 
                 <div>
-                    <label className="block font-medium mb-1">User Email</label>
+                    <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">User Email</label>
                     <input
                         type="email"
                         value={user?.email || ""}
                         readOnly
-                        className="w-full border border-gray-300 rounded-md p-2 bg-gray-100"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     />
                 </div>
 

@@ -46,28 +46,31 @@ const MyProperties = () => {
         navigate(`/update-property/${id}`);
     };
 
-    if (!user) return <h2 className="text-center mt-10">Please login to see your properties</h2>;
+    if (!user) return <h2 className="text-center mt-10 text-gray-900 dark:text-gray-100">Please login to see your properties</h2>;
 
     return (
         <div className="lg:w-10/12 mx-auto py-10">
-            <h1 className="text-3xl font-bold mb-6">My Properties</h1>
+            <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">My Properties</h1>
             {properties.length === 0 ? (
-                <p className="text-gray-500">You haven't added any properties yet.</p>
+                <p className="text-gray-500 dark:text-gray-400">You haven't added any properties yet.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {properties.map((property) => (
-                        <div key={property._id} className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col">
+                        <div
+                            key={property._id}
+                            className="bg-white dark:bg-base-200 shadow-md dark:shadow-lg rounded-lg overflow-hidden flex flex-col transition-colors duration-300"
+                        >
                             <img
                                 src={property.PropertyImage}
                                 alt={property.PropertyName}
                                 className="h-48 w-full object-cover"
                             />
-                            <div className="p-4 flex flex-col">
-                                <h2 className="text-xl font-bold mb-1">{property.PropertyName}</h2>
-                                <p className="text-gray-600 mb-1">{property.Category}</p>
-                                <p className="text-gray-500 mb-1">${property.Price?.toLocaleString() || "0"}</p>
-                                <p className="text-gray-500 mb-1">{property.Location}</p>
-                                <p className="text-gray-400 text-sm">
+                            <div className="p-4 flex flex-col flex-grow">
+                                <h2 className="text-xl font-bold mb-1 text-gray-900 dark:text-gray-100">{property.PropertyName}</h2>
+                                <p className="text-gray-600 dark:text-gray-300 mb-1">{property.Category}</p>
+                                <p className="text-gray-500 dark:text-gray-400 mb-1">${property.Price?.toLocaleString() || "0"}</p>
+                                <p className="text-gray-500 dark:text-gray-400 mb-1">{property.Location}</p>
+                                <p className="text-gray-400 dark:text-gray-500 text-sm">
                                     Posted: {property.PostedDate ? new Date(property.PostedDate).toLocaleDateString() : "N/A"}
                                 </p>
                             </div>
