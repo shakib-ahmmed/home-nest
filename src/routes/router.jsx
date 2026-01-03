@@ -43,6 +43,10 @@ const router = createBrowserRouter([
                 path: "Contact",
                 element: <Contact />
             },
+            {
+                path: "properties-details/:id",
+                element: <PropertiesDetails />
+            }
         ],
     },
 
@@ -81,10 +85,7 @@ const router = createBrowserRouter([
                     return fetch(`https://home-nest-server-nine.vercel.app/ratings?email=${email}`);
                 }
             },
-            {
-                path: "properties-details/:id",
-                element: <PropertiesDetails />
-            }
+
         ]
     },
 
