@@ -43,7 +43,7 @@ const MyProperties = () => {
     };
 
     const handleUpdate = (id) => {
-        navigate(`/update-property/${id}`);
+        navigate(`/dashboard/update-property/${id}`);
     };
 
     if (!user) return <h2 className="text-center mt-10 text-gray-900 dark:text-gray-100">Please login to see your properties</h2>;
@@ -77,19 +77,19 @@ const MyProperties = () => {
                             <div className="flex justify-between p-4">
                                 <button
                                     onClick={() => handleUpdate(property._id)}
-                                    className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                                    className="bg-blue-600 text-white px-3 py-1 rounded cursor-pointer hover:bg-blue-700"
                                 >
                                     Update
                                 </button>
                                 <button
                                     onClick={() => handleDelete(property._id)}
-                                    className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+                                    className="bg-red-600 text-white px-3 py-1 rounded cursor-pointer hover:bg-red-700"
                                 >
                                     Delete
                                 </button>
                                 <Link
                                     to={`/properties-details/${property._id}`}
-                                    className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                                    className="bg-green-600 text-white px-3 py-1 rounded cursor-pointer hover:bg-green-700"
                                 >
                                     View
                                 </Link>

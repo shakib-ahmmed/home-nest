@@ -13,7 +13,7 @@ const UpdateProperty = () => {
     const [loading, setLoading] = useState(true);
     const [updating, setUpdating] = useState(false);
 
-
+    // Load property data
     useEffect(() => {
         const fetchProperty = async () => {
             try {
@@ -29,20 +29,15 @@ const UpdateProperty = () => {
             }
         };
 
-
         fetchProperty();
     }, [id]);
 
-
     if (loading) return <Loader />;
-
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProperty({ ...property, [name]: value });
     };
-
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -72,95 +67,96 @@ const UpdateProperty = () => {
 
     return (
         <div className="lg:w-8/12 mx-auto py-10">
-            <h1 className="text-3xl font-bold mb-6 text-center">Update Property</h1>
-            <form onSubmit={handleUpdate} className="bg-white shadow-md p-6 rounded-lg">
+            <h1 className="text-3xl font-bold mb-6 text-center text-base-content">Update Property</h1>
+            <form onSubmit={handleUpdate} className="bg-base-100 shadow-md p-6 rounded-lg">
                 <div className="mb-4">
-                    <label className="block font-semibold mb-1">Property Name</label>
+                    <label className="block font-semibold mb-1 text-base-content">Property Name</label>
                     <input
                         type="text"
                         name="PropertyName"
                         value={property.PropertyName || ""}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-300 rounded px-3 py-2 bg-base-200 text-base-content"
                         required
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block font-semibold mb-1">Description</label>
+                    <label className="block font-semibold mb-1 text-base-content">Description</label>
                     <textarea
                         name="Description"
                         value={property.Description || ""}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-300 rounded px-3 py-2 bg-base-200 text-base-content"
                         required
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block font-semibold mb-1">Category</label>
+                    <label className="block font-semibold mb-1 text-base-content">Category</label>
                     <input
                         type="text"
                         name="Category"
                         value={property.Category || ""}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-300 rounded px-3 py-2 bg-base-200 text-base-content"
                         required
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block font-semibold mb-1">Price</label>
+                    <label className="block font-semibold mb-1 text-base-content">Price</label>
                     <input
                         type="number"
                         name="Price"
                         value={property.Price || ""}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-300 rounded px-3 py-2 bg-base-200 text-base-content"
                         required
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block font-semibold mb-1">Location</label>
+                    <label className="block font-semibold mb-1 text-base-content">Location</label>
                     <input
                         type="text"
                         name="Location"
                         value={property.Location || ""}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-300 rounded px-3 py-2 bg-base-200 text-base-content"
                         required
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block font-semibold mb-1">Image Link</label>
+                    <label className="block font-semibold mb-1 text-base-content">Image Link</label>
                     <input
                         type="text"
                         name="PropertyImage"
                         value={property.PropertyImage || ""}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-300 rounded px-3 py-2 bg-base-200 text-base-content"
                         required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block font-semibold mb-1">User Name</label>
-                    <input
-                        type="text"
-                        value={user?.displayName || ""}
-                        readOnly
-                        className="w-full border rounded px-3 py-2 bg-gray-100"
                     />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block font-semibold mb-1">User Email</label>
+                    <label className="block font-semibold mb-1 text-base-content">User Name</label>
+                    <input
+                        type="text"
+                        value={user?.displayName || ""}
+                        readOnly
+                        className="w-full border border-gray-900 rounded px-3 py-2  text-gray-900 dark:text-gray-100"
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block font-semibold mb-1 text-base-content">User Email</label>
                     <input
                         type="email"
                         value={user?.email || ""}
                         readOnly
-                        className="w-full border rounded px-3 py-2 bg-gray-100"
+                        className="w-full border border-gray-900 rounded px-3 py-2  text-gray-900 dark:text-gray-100 "
                     />
                 </div>
 
@@ -168,7 +164,6 @@ const UpdateProperty = () => {
                     type="submit"
                     disabled={updating}
                     className="btn bg-[#075a12] hover:bg-green-950 text-white font-semibold w-[145px] h-[45px] hover:scale-105 transition ease-in-out flex items-center justify-center"
-
                 >
                     {updating ? "Updating..." : "Update Property"}
                 </button>

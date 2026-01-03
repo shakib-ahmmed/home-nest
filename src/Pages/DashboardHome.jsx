@@ -60,7 +60,7 @@ const DashboardHome = () => {
 
             <div className="mt-6 p-6 rounded-xl shadow-md bg-white dark:bg-gray-800 transition-all duration-300 hover:shadow-xl min-h-[200px] flex items-center justify-center">
                 <p className="text-gray-500 dark:text-gray-400">
-                    Select an action from above or check your recent properties here.
+                  
                 </p>
             </div>
         </div>
