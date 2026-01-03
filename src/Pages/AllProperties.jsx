@@ -32,18 +32,22 @@ const AllProperties = () => {
 
     return (
         <div className="lg:w-10/12 mx-auto py-10">
-            <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">All Properties</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center text-base-content">
+                All Properties
+            </h1>
+
 
             {/* Search & Sort */}
             <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
 
+                {/* Search */}
                 <div className="flex items-center w-12 md:w-1/2 gap-2">
                     <input
                         type="text"
                         placeholder="Search by property name..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 w-full text-sm bg-white dark:bg-base-200 text-gray-900 dark:text-gray-100"
+                        className="border border-base-300 dark:border-base-600 rounded-lg px-3 py-1.5 w-full text-sm bg-base-200 text-base-content"
                     />
                     <button
                         onClick={() => setSearchQuery(search)}
@@ -53,12 +57,13 @@ const AllProperties = () => {
                     </button>
                 </div>
 
+                {/* Sort */}
                 <div className="flex items-center gap-2">
-                    <label className="text-gray-600 dark:text-gray-300 text-sm font-medium">Sort by:</label>
+                    <label className="text-base-content text-sm font-medium">Sort by:</label>
                     <select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
-                        className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-base-200 text-gray-900 dark:text-gray-100"
+                        className="border border-base-300 dark:border-base-600 rounded-lg px-3 py-1.5 text-sm bg-base-200 text-base-content"
                     >
                         <option value="price">Price</option>
                         <option value="postedDate">Posted Date</option>
@@ -66,7 +71,7 @@ const AllProperties = () => {
 
                     <button
                         onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-                        className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm px-3 py-1.5 rounded-lg text-gray-900 dark:text-gray-100"
+                        className="bg-base-300 dark:bg-base-700 hover:bg-base-200 dark:hover:bg-base-600 text-sm px-3 py-1.5 rounded-lg text-base-content"
                     >
                         {order === "asc" ? "↑ Asc" : "↓ Desc"}
                     </button>

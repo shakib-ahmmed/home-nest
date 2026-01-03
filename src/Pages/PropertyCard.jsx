@@ -11,7 +11,7 @@ const PropertyCard = ({ property }) => {
             />
 
             {/* Property Info */}
-            <div className="p-4 flex flex-col flex-grow">
+            <div className="p-4 flex flex-col `flex-grow`">
                 <h2 className="text-xl font-bold mb-1 text-base-content">{property.PropertyName}</h2>
                 <p className="text-sm font-semibold text-base-content/70 mb-2">{property.Category}</p>
                 <p className="text-base-content/80 mb-2">{property.Description}</p>
