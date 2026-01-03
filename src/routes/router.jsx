@@ -13,6 +13,9 @@ import PropertiesDetails from "../Pages/PropertiesDetails.jsx";
 import ErrorPage from "../Pages/ErrorPage.jsx";
 import MyRating from "../Pages/MyRating.jsx";
 import UpdateProperty from "../Pages/UpdateProperty.jsx";
+import About from "../Pages/About.jsx";
+import Contact from "../Pages/Contact.jsx";
+import DashboardLayout from "../Layouts/DashboardLayout.jsx";
 
 
 
@@ -30,33 +33,43 @@ const router = createBrowserRouter([
             {
                 path: "all-properties",
                 element: <AllProperties />,
-            }
+            },
+            {
+                path: "About",
+                element: <About />
+            },
+            {
+                path: "Contact",
+                element: <Contact />
+            },
         ],
     },
 
     {
-        path: '/',
-        element: <PrivetRoute />,
+        path: "/dashboard",
+        element:
+            <PrivetRoute>
+                <DashboardLayout />
+            </PrivetRoute>,
         children: [
             {
-                path: "/add-property",
+                path: "add-property",
                 element: <AddProperty />
             },
             {
-                path: "/all-properties",
+                path: "all-properties",
                 element: <AllProperties />
             },
             {
-                path: "/My-Properties",
-                element: <MyProperties />,
+                path: "my-properties",
+                element: <MyProperties />
             },
             {
-                path: "/update-property/:id",
-                element: <UpdateProperty />,
-
+                path: "update-property/:id",
+                element: <UpdateProperty />
             },
             {
-                path: "/my-rating",
+                path: "my-rating",
                 element: <MyRating />,
                 loader: () => {
                     const email = localStorage.getItem("user-email");
@@ -64,11 +77,12 @@ const router = createBrowserRouter([
                 }
             },
             {
-                path: "/properties-details/:id",
-                element: <PropertiesDetails />,
+                path: "properties-details/:id",
+                element: <PropertiesDetails />
             }
         ]
     },
+
 
     {
         path: '/auth',

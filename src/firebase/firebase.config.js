@@ -10,7 +10,7 @@ const firebaseConfig = {
     projectId: "home-nest-84a80",
     storageBucket: "home-nest-84a80.firebasestorage.app",
     messagingSenderId: "803823515329",
-    appId: "1:803823515329:web:8e6899645abe158692c640"
+    appId: "1:803823515329:web:8e6899645abe158692c640",
 };
 
 // Initialize Firebase
