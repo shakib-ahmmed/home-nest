@@ -10,32 +10,37 @@ const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [theme, setTheme] = useState("light");
 
-    useEffect(() => {
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme) {
-            setTheme(savedTheme);
+    // Apply theme change
+    const handleThemeChange = (newTheme) => {
+        setTheme(newTheme);
+
+        if (newTheme === "system") {
+            const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+        } else {
+            document.documentElement.setAttribute("data-theme", newTheme);
         }
-    }, []);
+
+        localStorage.setItem("theme", newTheme);
+    };
+
+    // Initialize theme on mount
     useEffect(() => {
-        const applyTheme = (mode) => {
-            if (mode === "system") {
-                const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-                document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
-            } else {
-                document.documentElement.setAttribute("data-theme", mode);
-            }
+        const savedTheme = localStorage.getItem("theme") || "system";
+        handleThemeChange(savedTheme);
+    }, []);
+
+    // Listen to system changes if system mode is selected
+    useEffect(() => {
+        if (theme !== "system") return;
+
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const listener = (e) => {
+            document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "light");
         };
 
-        applyTheme(theme);
-
-        if (theme === "system") {
-            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-            const handler = () => applyTheme("system");
-            mediaQuery.addEventListener("change", handler);
-            return () => mediaQuery.removeEventListener("change", handler);
-        }
-
-        localStorage.setItem("theme", theme);
+        mediaQuery.addEventListener("change", listener);
+        return () => mediaQuery.removeEventListener("change", listener);
     }, [theme]);
 
     const handleLogOut = () => {
@@ -51,7 +56,6 @@ const Navbar = () => {
         <>
             <div className="navbar sticky top-0 z-50 bg-base-100 shadow-sm pb-5 lg:pl-[80px] lg:pr-[80px]">
                 <div className="navbar-start">
-
                     {/* Mobile Menu */}
                     <div className="dropdown pb-5">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -65,16 +69,11 @@ const Navbar = () => {
                             <li><NavLink to="/all-properties">All Properties</NavLink></li>
                             <li><NavLink to="/about">About</NavLink></li>
                             <li><NavLink to="/contact">Contact</NavLink></li>
-                            {user && (
-                                <>
-                                    <li><NavLink to="/dashboard">My Dashboard</NavLink></li>
-                                </>
-                            )}
+                            {user && <li><NavLink to="/dashboard">My Dashboard</NavLink></li>}
                         </ul>
                     </div>
 
-                    {/* Desktop Menu */}
-
+                    {/* Logo */}
                     <NavLink to="/" className="flex items-center gap-2">
                         <img
                             className="lg:w-12 w-10 lg:h-12 h-10"
@@ -86,6 +85,8 @@ const Navbar = () => {
                         </span>
                     </NavLink>
                 </div>
+
+                {/* Desktop Menu */}
                 <div className="navbar-center font-bold hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><NavLink to="/">Home</NavLink></li>
@@ -97,7 +98,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-end gap-2">
-
+                    {/* Theme Dropdown */}
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
                             {theme === "light" && <Sun />}
@@ -109,15 +110,21 @@ const Navbar = () => {
                             tabIndex={0}
                             className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-40"
                         >
-                            <li><button onClick={() => setTheme("light")}>☀ Light</button></li>
-                            <li><button onClick={() => setTheme("dark")}>🌙 Dark</button></li>
-                            <li><button onClick={() => setTheme("system")}>💻 System</button></li>
+                            <li>
+                                <button onClick={() => handleThemeChange("light")}>☀ Light</button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleThemeChange("dark")}>🌙 Dark</button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleThemeChange("system")}>💻 System</button>
+                            </li>
                         </ul>
                     </div>
 
-                    {/* USER / AUTH */}
+                    {/* User / Auth */}
                     {user ? (
-                        <div className="relative  lg:flex">
+                        <div className="relative lg:flex">
                             <button
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
                                 className="p-2 rounded-full hover:scale-105 transition"
