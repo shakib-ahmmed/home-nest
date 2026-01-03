@@ -4,6 +4,18 @@ import { UserIcon, LogOut, Menu, Home, Star, Plus } from "lucide-react";
 import { AuthContext } from "../Provider/AuthProvider.jsx";
 import { toast } from "react-hot-toast";
 
+// Default dashboard home for empty Outlet
+const DashboardHome = () => (
+    <div className="flex flex-col gap-6">
+        <h2 className="text-2xl font-bold text-[#075a12] dark:text-green-400">
+            Welcome to your Dashboard!
+        </h2>
+        <p className="text-gray-700 dark:text-gray-300">
+            Here you can manage your properties, see your ratings, and add new listings.
+        </p>
+    </div>
+);
+
 const DashboardLayout = () => {
     const { user, logOut } = useContext(AuthContext);
     const location = useLocation();
@@ -15,7 +27,7 @@ const DashboardLayout = () => {
             .catch((error) => toast.error(error.message));
     };
 
-    // Define links with icons
+    // Sidebar links
     const navLinks = [
         { name: "Add Property", path: "/dashboard/add-property", icon: Plus },
         { name: "My Properties", path: "/dashboard/my-properties", icon: Home },
@@ -36,20 +48,24 @@ const DashboardLayout = () => {
             {/* Sidebar */}
             <aside
                 className={`bg-base-200 p-6 flex flex-col justify-between shadow-lg w-64
-                fixed top-0 left-0 h-full z-40 transform transition-transform duration-300
-                ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
+        fixed top-0 left-0 h-full z-40 transform transition-transform duration-300
+        ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
             >
                 {/* Logo */}
-                <Link
-                    to="/"
-                    className="hover:scale-105 transition-transform duration-300 mb-6 flex flex-col items-center"
-                    onClick={() => setIsMobileSidebarOpen(false)}
-                >
-                    <img src="/logo.png" alt="Logo" className="w-28 rounded-lg mb-2 shadow-md" />
-                    <h2 className="text-2xl font-extrabold text-center text-[#075a12] drop-shadow-sm">
-                        User Dashboard
-                    </h2>
-                </Link>
+                <div className="pb-10">
+                    <Link
+                        to="/"
+                        className="hover:scale-105 transition-transform duration-300 mb-6 flex flex-col items-center"
+                        onClick={() => setIsMobileSidebarOpen(false)}
+                    >
+                        <img src="/logo.png" alt="Logo" className="w-28 rounded-lg mb-2 shadow-md" />
+                    </Link>
+                    <Link to="/dashboard" onClick={() => setIsMobileSidebarOpen(false)}>
+                        <h2 className="text-2xl font-extrabold text-center text-[#075a12] drop-shadow-sm">
+                            User Dashboard
+                        </h2>
+                    </Link>
+                </div>
 
                 {/* Navigation */}
                 <nav className="flex-1 flex flex-col gap-3">
@@ -62,8 +78,8 @@ const DashboardLayout = () => {
                                 to={link.path}
                                 onClick={() => setIsMobileSidebarOpen(false)}
                                 className={`group flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-300 cursor-pointer
-                                    ${isActive ? "bg-[#075a12] text-white shadow-md scale-105" : "hover:bg-[#075a12] hover:text-white hover:scale-105"}`}
-                                title={link.name} // Tooltip
+                  ${isActive ? "bg-[#075a12] text-white shadow-md scale-105" : "hover:bg-[#075a12] hover:text-white hover:scale-105"}`}
+                                title={link.name}
                             >
                                 <Icon className={`w-5 h-5 transition-colors duration-300 ${isActive ? "text-white" : "text-[#075a12] group-hover:text-white"}`} />
                                 <span className="font-medium">{link.name}</span>
@@ -89,7 +105,8 @@ const DashboardLayout = () => {
 
             {/* Main Content */}
             <div className="flex-1 md:ml-64">
-                {/* Mobile Top Navbar */}
+
+                {/* Mobile Navbar */}
                 <div className="flex justify-between items-center p-4 shadow-md bg-base-100 md:hidden">
                     <button
                         onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
@@ -100,7 +117,7 @@ const DashboardLayout = () => {
                     <h1 className="text-xl font-bold text-[#075a12]">Dashboard</h1>
                 </div>
 
-                {/* Desktop Top Navbar */}
+                {/* Desktop Navbar */}
                 <div className="hidden md:flex justify-between items-center p-6">
                     <h1 className="text-2xl font-bold text-[#075a12]">Dashboard</h1>
                     <div className="flex items-center gap-3">
