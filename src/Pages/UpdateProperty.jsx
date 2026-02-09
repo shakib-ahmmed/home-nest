@@ -13,7 +13,11 @@ const UpdateProperty = () => {
     const [loading, setLoading] = useState(true);
     const [updating, setUpdating] = useState(false);
 
-    // Load property data
+
+
+
+
+    
     useEffect(() => {
         const fetchProperty = async () => {
             try {
