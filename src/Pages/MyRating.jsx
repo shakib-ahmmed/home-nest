@@ -49,31 +49,7 @@ const MyRating = () => {
                     {reviews.map((review) => {
                         const property = properties.find((p) => p._id === review.propertyId);
 
-                        return (
-                            <div key={review._id} className="bg-white shadow-md rounded-lg p-4 flex flex-col">
-                                {property && (
-                                    <img
-                                        src={property.PropertyImage}
-                                        alt={property.PropertyName}
-                                        className="h-40 w-full object-cover rounded-md mb-2"
-                                    />
-                                )}
-
-                                <h2 className="text-lg font-semibold">
-                                    {property ? property.PropertyName : "Property Deleted"}
-                                </h2>
-
-                                <div className="flex items-center gap-1 mt-1">
-                                    {[...Array(Number(review.rating))].map((_, i) => (
-                                        <Star key={i} className="text-yellow-400 fill-yellow-400" />
-                                    ))}
-                                </div>
-
-                                <p className="text-gray-700 mt-2">{review.comment}</p>
-                                <p className="text-gray-500 text-sm mt-1">
-                                    Reviewed on: {new Date(review.date).toLocaleDateString()}
-                                </p>
-                            </div>
+                       
                         );
                     })}
                 </div>
